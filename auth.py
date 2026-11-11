@@ -1,5 +1,8 @@
 from pathlib import Path
 from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
 
 scopes = [
 'https://www.googleapis.com/auth/drive.file'
@@ -7,3 +10,14 @@ scopes = [
 file_name = 'client_secret_744285131798-2m5n0b6ndqtsjvmpluerdpgm2ab0949j.apps.googleusercontent.com.json'
 path = Path.home() / 'Downloads'/ file_name
 flow = InstalledAppFlow.from_client_secrets_file(str(path), scopes)
+creds = flow.run_local_server(port=0)
+print("Авторизация успешна:", creds.valid)
+
+service = build('sheets', 'v4', credentials=creds)
+
+creds2 = None
+
+if Path('token.json').is_file():
+    creds2 = flow.run_local_server(port=0)
+if not creds2 or not creds2.valid:
+    
