@@ -11,11 +11,10 @@ def get_credentials():
     'https://www.googleapis.com/auth/drive.file'
     ]
     load_dotenv()
-    if os.environ.get("GOOGLE_REFRESH_TOKEN"):
-        print('refresh is finded')
-        refresh_token = os.environ['GOOGLE_REFRESH_TOKEN']
-        client_id = os.environ['GOOGLE_CLIENT_ID']
-        client_secret = os.environ['GOOGLE_CLIENT_SECRET']
+    refresh_token = os.getenv("GOOGLE_REFRESH_TOKEN")
+    client_id = os.getenv("GOOGLE_CLIENT_ID")
+    client_secret = os.getenv("GOOGLE_CLIENT_SECRET")
+    if refresh_token and client_secret and client_id:
         token_uri = 'https://oauth2.googleapis.com/token'
         creds = Credentials(
             token=None, 
@@ -25,6 +24,8 @@ def get_credentials():
             client_secret=client_secret, 
             scopes=scopes)
         creds.refresh(Request())
+    else:
+        raise ValueError('Не задана одна из переменных окружения')
 
         
     # path = Path("client_secret.json")
