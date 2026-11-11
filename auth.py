@@ -13,6 +13,9 @@ def get_credentials():
     load_dotenv()
     if os.environ.get("GOOGLE_REFRESH_TOKEN"):
         print('refresh is finded')
+        refresh_token = os.environ['GOOGLE_REFRESH_TOKEN']
+        client_id = os.environ['GOOGLE_CLIENT_ID']
+        client_secret = os.environ['GOOGLE_CLIENT_SECRET']
     path = Path("client_secret.json")
     creds = None
     token = 'token.json'
