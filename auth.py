@@ -13,7 +13,7 @@ scopes = [
 # creds = flow.run_local_server(port=0)
 # print("Авторизация успешна:", creds.valid)
 
-
+path = Path("client_secret.json")
 creds = None
 token = 'token.json'
 if Path(token).is_file():
