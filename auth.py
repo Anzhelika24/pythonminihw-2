@@ -19,6 +19,7 @@ token = 'token.json'
 if Path(token).is_file():
     creds = Credentials.from_authorized_user_file(token, scopes)
 if not creds or not creds.valid:
-    if creds.expired and creds.refresh_token:
-        
+    if creds and creds.expired and creds.refresh_token:
+        request = google.auth.transport.requests.Request()
+        creds.refresh(request)
 service = build('sheets', 'v4', credentials=creds)
