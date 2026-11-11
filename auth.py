@@ -15,9 +15,10 @@ scopes = [
 
 
 creds = None
-path = Path('token.json')
-if path.is_file():
-    creds = Credentials.from_authorized_user_file(path, scopes)
+token = 'token.json'
+if Path(token).is_file():
+    creds = Credentials.from_authorized_user_file(token, scopes)
 if not creds or not creds.valid:
-    
+    if creds.expired and creds.refresh_token:
+        
 service = build('sheets', 'v4', credentials=creds)
