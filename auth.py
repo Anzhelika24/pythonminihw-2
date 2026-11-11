@@ -17,7 +17,7 @@ def get_credentials():
         client_id = os.environ['GOOGLE_CLIENT_ID']
         client_secret = os.environ['GOOGLE_CLIENT_SECRET']
         token_uri = 'https://oauth2.googleapis.com/token'
-        creds = Credentials(refresh_token=refresh_token, token_uri=token_uri, client_id=client_id, client_secret=client_id, scopes=scopes)
+        creds = Credentials(token=None, refresh_token=refresh_token, token_uri=token_uri, client_id=client_id, client_secret=client_secret, scopes=scopes)
     path = Path("client_secret.json")
     creds = None
     token = 'token.json'
