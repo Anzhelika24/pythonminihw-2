@@ -12,7 +12,7 @@ def get_credentials():
     ]
     load_dotenv()
     if os.environ.get("GOOGLE_REFRESH_TOKEN"):
-        
+        print('refresh is finded')
     path = Path("client_secret.json")
     creds = None
     token = 'token.json'
@@ -33,4 +33,3 @@ def work_with_sheets(creds):
 
 
 work_with_sheets(get_credentials())
-print(dir(os.environ))
