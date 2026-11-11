@@ -24,6 +24,8 @@ def get_credentials():
     print("Авторизация успешна:", creds.valid)
     return creds
 
-creds = get_credentials()
-service = build('sheets', 'v4', credentials=creds)
+def work_with_sheets(creds):
+    service = build('sheets', 'v4', credentials=creds)
 
+
+work_with_sheets(get_credentials())
