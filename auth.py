@@ -4,5 +4,6 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 scopes = [
 'https://www.googleapis.com/auth/drive.file'
 ]
-
-path = Path.home() / 'Downloads'/ 'client_secret_744285131798-2m5n0b6ndqtsjvmpluerdpgm2ab0949j.apps.googleusercontent.com'
+file_name = 'client_secret_744285131798-2m5n0b6ndqtsjvmpluerdpgm2ab0949j.apps.googleusercontent.com.json'
+path = Path.home() / 'Downloads'/ f'{file_name}'
+flow = InstalledAppFlow.from_client_secrets_file('file_name', scopes)
