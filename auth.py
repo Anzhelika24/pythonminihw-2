@@ -10,7 +10,9 @@ def get_credentials():
     scopes = [
     'https://www.googleapis.com/auth/drive.file'
     ]
-
+    load_dotenv()
+    if os.environ.get("GOOGLE_REFRESH_TOKEN"):
+        
     path = Path("client_secret.json")
     creds = None
     token = 'token.json'
