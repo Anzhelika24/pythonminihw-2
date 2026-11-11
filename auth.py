@@ -22,6 +22,6 @@ if not creds or not creds.valid:
     if creds and creds.expired and creds.refresh_token:
         creds.refresh(Request())
     else: 
-        flow = InstalledAppFlow.from_client_secrets_file(token)
+        flow = InstalledAppFlow.from_client_secrets_file(str(path), scopes)
         creds = flow.run_local_server(port=0)
 service = build('sheets', 'v4', credentials=creds)
