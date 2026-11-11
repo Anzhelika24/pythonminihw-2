@@ -24,6 +24,8 @@ def get_credentials():
             client_id=client_id, 
             client_secret=client_secret, 
             scopes=scopes)
+        creds.refresh(Request())
+
         
     # path = Path("client_secret.json")
     # creds = None
@@ -38,7 +40,7 @@ def get_credentials():
     #         creds = flow.run_local_server(port=0)
     #     Path(token).write_text(creds.to_json())
     # print("Авторизация успешна:", creds.valid)
-    # return creds
+    return creds
 
 def work_with_sheets(creds):
     service = build('sheets', 'v4', credentials=creds)
