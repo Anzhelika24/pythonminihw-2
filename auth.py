@@ -25,4 +25,5 @@ if not creds or not creds.valid:
         flow = InstalledAppFlow.from_client_secrets_file(str(path), scopes)
         creds = flow.run_local_server(port=0)
     Path(token).write_text(creds.to_json())
+print("Авторизация успешна:", creds.valid)
 service = build('sheets', 'v4', credentials=creds)
